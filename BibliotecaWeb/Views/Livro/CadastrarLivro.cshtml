@@ -1,0 +1,73 @@
+﻿@{
+    List<BibliotecaWeb.Models.Livro> livros = ViewBag.Livros;
+    DateTime dataHora = ViewBag.DataHora;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastrar Livro</title>
+</head>
+
+<body>
+    <form asp-action="CadastrarLivro" asp-controller="Livro" method="post">
+        <fieldset>
+            <legend>Cadastrar Livro</legend>
+            <label for="TxtTitulo">Título:</label>
+            <input type="text" name="TxtTitulo" value="" placeholder="Título" /> <br />
+
+            <label for="TxtAutor">Autor:</label>
+            <input type="text" name="TxtAutor" value="" placeholder="Autor" /> <br />
+
+            <label for="TxtEditora">Editora:</label>
+            <input type="text" name="TxtEditora" value="" placeholder="Editora" /> <br />
+
+            <label for="TxtEdicao">Edição:</label>
+            <input type="text" name="TxtEdicao" value="" placeholder="Edição" /> <br />
+
+            <label for="TxtPaginas">Número de páginas:</label>
+            <input type="text" name="TxtPaginas" value="" placeholder="Número de páginas" /> <br />
+
+            <label for="TxtISBN">ISBN:</label>
+            <input type="text" name="TxtISBN" value="" placeholder="ISBN" /> <br />
+
+            <input type="submit" name="Cadastrar" value="CadastrarLivro" />
+        </fieldset>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Título: </th>
+                <th>Autor: </th>
+                <th>Editora: </th>
+                <th>Edição: </th>
+                <th>Nº páginas: </th>
+                <th>Isbn: </th>
+                <th>Criado em: </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BibliotecaWeb.Models.Livro livroCadastrado in livros)
+            {
+                <tr>
+                    <td>@livroCadastrado.Id</td>
+                    <td>@livroCadastrado.Titulo</td>
+                    <td>@livroCadastrado.Autor</td>
+                    <td>@livroCadastrado.Editora</td>
+                    <td>@livroCadastrado.Edicao</td>
+                    <td>@livroCadastrado.NumPaginas</td>
+                    <td>@livroCadastrado.Isbn</td>
+                    <td>@livroCadastrado.CriadoEm</td>
+                    <td>
+                        <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id">Remover</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+        <p><b>Atualizado em: @dataHora</b></p>
+   
+</body>
+</html>
