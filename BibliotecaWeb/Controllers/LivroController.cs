@@ -26,7 +26,35 @@ namespace BibliotecaWeb.Controllers
 
         public IActionResult Remover(int id)
         {
-            //Completar com o código da remoção.
+            _context.Livros.Remove(_context.Livros.Find(id));
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Menu");
+        }
+
+        public IActionResult Alterar(int id)
+        {
+            ViewBag.Livro = _context.Livros.Find(id);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Alterar(int TxtId, string TxtTitulo, string TxtAutor, string TxtEditora,
+            string TxtEdicao, string TxtPaginas, string TxtISBN)
+        {
+            //Recebe os dados do formulário e salva-os.
+            Livro livro = _context.Livros.Find(TxtId);
+
+            livro.Titulo = TxtTitulo;
+            livro.Autor = TxtAutor;
+            livro.Editora = TxtEditora;
+            livro.Edicao = TxtEdicao;
+            livro.NumPaginas = TxtPaginas;
+            livro.Isbn = TxtISBN;
+            
+            _context.Livros.Update(livro);
+            _context.SaveChanges();
+
+            //Após salvar, o usuário é redirecionado para a página principal.
             return RedirectToAction("Index", "Menu");
         }
 

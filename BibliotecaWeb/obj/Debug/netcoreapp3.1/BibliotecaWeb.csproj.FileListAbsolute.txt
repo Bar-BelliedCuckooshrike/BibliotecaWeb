@@ -71,3 +71,4 @@ C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\BibliotecaWeb.csproj.CoreCompileInputs.cache
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\BibliotecaWeb.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Livro\Alterar.cshtml.g.cs
