@@ -1,10 +1,9 @@
-﻿
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Menu Principal</title>
-</head>
-<body>
-    <h1>Menu Principal</h1>
-    <a asp-action="CadastrarLivro" asp-controller="Livro">Cadastrar Livro</a>
-</body>
-</html>
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+
+    <h3 class="espacamento-baixo">Menu Principal</h3>
+    <a asp-action="CadastrarLivro" asp-controller="Livro" 
+       class="btn btn-secondary espacamento-baixo">Cadastrar Livro</a>
+
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>

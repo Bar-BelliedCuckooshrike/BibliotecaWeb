@@ -1,7 +1,5 @@
-﻿@{ 
-    BibliotecaWeb.Models.Livro livro = ViewBag.Livro;
-}
-
+﻿@model Livro
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,26 +10,26 @@
     <form asp-action="Alterar" asp-controller="Livro" method="post">
         <fieldset>
             <legend>Alterar Livro</legend>
-            <label for="TxtId">Id:</label>
-            <input type="text" name="TxtId" value="@livro.Id" readonly />
+            <label asp-for="Id">Id:</label>
+            <input type="text" asp-for="Id" readonly />
 
             <label for="TxtTitulo">Título:</label>
-            <input type="text" name="TxtTitulo" value="@livro.Titulo" placeholder="Título" /> <br />
+            <input type="text" asp-for="Titulo" placeholder="Título" /> <br />
 
             <label for="TxtAutor">Autor:</label>
-            <input type="text" name="TxtAutor" value="@livro.Autor" placeholder="Autor" /> <br />
+            <input type="text" asp-for="Autor" placeholder="Autor" /> <br />
 
             <label for="TxtEditora">Editora:</label>
-            <input type="text" name="TxtEditora" value="@livro.Editora" placeholder="Editora" /> <br />
+            <input type="text" asp-for="Editora" placeholder="Editora" /> <br />
 
             <label for="TxtEdicao">Edição:</label>
-            <input type="text" name="TxtEdicao" value="@livro.Edicao" placeholder="Edição" /> <br />
+            <input type="text" asp-for="Edicao" placeholder="Edição" /> <br />
 
             <label for="TxtPaginas">Número de páginas:</label>
-            <input type="text" name="TxtPaginas" value="@livro.NumPaginas" placeholder="Número de páginas" /> <br />
+            <input type="text" asp-for="NumPaginas" placeholder="Número de páginas" /> <br />
 
             <label for="TxtISBN">ISBN:</label>
-            <input type="text" name="TxtISBN" value="@livro.Isbn" placeholder="ISBN" /> <br />
+            <input type="text" asp-for="Isbn" placeholder="ISBN" /> <br />
 
             <input type="submit" value="Salvar" />
         </fieldset>

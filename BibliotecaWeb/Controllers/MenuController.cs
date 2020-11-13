@@ -13,6 +13,7 @@ namespace BibliotecaWeb.Controllers
         
         public IActionResult Index()
         {
+            ViewBag.Title = "Menu Principal";
             return View();          
         }
     }

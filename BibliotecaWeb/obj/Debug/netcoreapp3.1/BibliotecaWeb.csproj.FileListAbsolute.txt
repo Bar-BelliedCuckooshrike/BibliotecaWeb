@@ -69,6 +69,7 @@ C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Livro\Alterar.cshtml.g.cs
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\BibliotecaWeb.csproj.CoreCompileInputs.cache
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\BibliotecaWeb.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Livro\Alterar.cshtml.g.cs
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs

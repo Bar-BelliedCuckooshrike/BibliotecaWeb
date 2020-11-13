@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Biblioteca Pessoal</a>
+    </nav>
+
+    <div class="conteudo">
+        @RenderBody()
+    </div>
+
+    <hr />
+    <footer class="espacamento-cima espacamento-baixo">
+        <span>Criado por: Felipe Augusto e Fabrício Rosa de França - 2020</span>
+    </footer>
+
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

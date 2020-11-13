@@ -1,76 +1,74 @@
-﻿@{
-    List<BibliotecaWeb.Models.Livro> livros = ViewBag.Livros;
-    DateTime dataHora = ViewBag.DataHora;
-}
+﻿@model Livro
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Cadastrar Livro</title>
-</head>
+@{ List<Livro> livros = ViewBag.Livros;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  }
 
-<body>
     <form asp-action="CadastrarLivro" asp-controller="Livro" method="post">
         <fieldset>
             <legend>Cadastrar Livro</legend>
-            <label for="TxtTitulo">Título:</label>
-            <input type="text" name="TxtTitulo" value="" placeholder="Título" /> <br />
 
-            <label for="TxtAutor">Autor:</label>
-            <input type="text" name="TxtAutor" value="" placeholder="Autor" /> <br />
+            <div asp-validation-summary="ModelOnly"></div>
 
-            <label for="TxtEditora">Editora:</label>
-            <input type="text" name="TxtEditora" value="" placeholder="Editora" /> <br />
+            <label asp-for="Titulo">Título:</label>
+            <input type="text" asp-for="Titulo" value="" placeholder="Título" /> <br />
 
-            <label for="TxtEdicao">Edição:</label>
-            <input type="text" name="TxtEdicao" value="" placeholder="Edição" /> <br />
+            <label asp-for="Autor">Autor:</label>
+            <input type="text" asp-for="Autor" value="" placeholder="Autor" /> <br />
 
-            <label for="TxtPaginas">Número de páginas:</label>
-            <input type="text" name="TxtPaginas" value="" placeholder="Número de páginas" /> <br />
+            <label asp-for="Editora">Editora:</label>
+            <input type="text" asp-for="Editora" value="" placeholder="Editora" /> <br />
 
-            <label for="TxtISBN">ISBN:</label>
-            <input type="text" name="TxtISBN" value="" placeholder="ISBN" /> <br />
+            <label asp-for="Edicao">Edição:</label>
+            <input type="text" asp-for="Edicao" value="" placeholder="Edição" /> <br />
+
+            <label asp-for="NumPaginas">Número de páginas:</label>
+            <input type="text" asp-for="NumPaginas" value="" placeholder="Número de páginas" /> <br />
+
+            <label asp-for="Isbn">ISBN:</label>
+            <input type="text" asp-for="Isbn" value="" placeholder="ISBN" /> <br />
 
             <input type="submit" name="Cadastrar" value="CadastrarLivro" />
         </fieldset>
     </form>
 
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Título: </th>
-                <th>Autor: </th>
-                <th>Editora: </th>
-                <th>Edição: </th>
-                <th>Nº páginas: </th>
-                <th>Isbn: </th>
-                <th>Criado em: </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (BibliotecaWeb.Models.Livro livroCadastrado in livros)
-            {
+    <div>
+        <table class="table table-hover table-striped espacamento-cima espacamento-baixo">
+            <thead>
                 <tr>
-                    <td>@livroCadastrado.Id</td>
-                    <td>@livroCadastrado.Titulo</td>
-                    <td>@livroCadastrado.Autor</td>
-                    <td>@livroCadastrado.Editora</td>
-                    <td>@livroCadastrado.Edicao</td>
-                    <td>@livroCadastrado.NumPaginas</td>
-                    <td>@livroCadastrado.Isbn</td>
-                    <td>@livroCadastrado.CriadoEm</td>
-                    <td>
-                        <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id">Remover</a>
-                    </td>
-                    <td>
-                        <a asp-action="Alterar" asp-controller="Livro" asp-route-id="@livroCadastrado.Id">Alterar</a>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">Título: </th>
+                    <th scope="col">Autor: </th>
+                    <th scope="col">Editora: </th>
+                    <th scope="col">Edição: </th>
+                    <th scope="col">Nº páginas: </th>
+                    <th scope="col">Isbn: </th>
+                    <th scope="col">Criado em: </th>
                 </tr>
-            }
-        </tbody>
-    </table>
-        <p><b>Atualizado em: @dataHora</b></p>
-   
-</body>
-</html>
+            </thead>
+            <tbody>
+
+                @foreach (Livro livroCadastrado in livros)
+                {
+                    <tr class="table-secondary">
+                        <td>@livroCadastrado.Id</td>
+                        <td>@livroCadastrado.Titulo</td>
+                        <td>@livroCadastrado.Autor</td>
+                        <td>@livroCadastrado.Editora</td>
+                        <td>@livroCadastrado.Edicao</td>
+                        <td>@livroCadastrado.NumPaginas</td>
+                        <td>@livroCadastrado.Isbn</td>
+                        <td>@livroCadastrado.CriadoEm</td>
+                        <td>
+                            <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id">Remover</a>
+                        </td>
+                        <td>
+                            <a asp-action="Alterar" asp-controller="Livro" asp-route-id="@livroCadastrado.Id">Alterar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p><b>Atualizado em: @DateTime.Now</b></p>
+    </div>
+
