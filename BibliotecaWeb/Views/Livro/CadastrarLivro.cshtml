@@ -1,34 +1,50 @@
 ﻿@model Livro
 
 @{ List<Livro> livros = ViewBag.Livros;
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    
   }
 
-    <form asp-action="CadastrarLivro" asp-controller="Livro" method="post">
+    <form asp-action="CadastrarLivro" asp-controller="Livro" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Cadastrar Livro</legend>
 
             <div asp-validation-summary="ModelOnly"></div>
 
-            <label asp-for="Titulo">Título:</label>
-            <input type="text" asp-for="Titulo" value="" placeholder="Título" /> <br />
+            <div class="form-group">
+                <label asp-for="Titulo">Título:</label>
+                <input class="form-control" type="text" asp-for="Titulo" value="" placeholder="Título" />
+            </div>
 
-            <label asp-for="Autor">Autor:</label>
-            <input type="text" asp-for="Autor" value="" placeholder="Autor" /> <br />
+            <div class="form-group">
+                <label asp-for="Autor">Autor:</label>
+                <input class="form-control" type="text" asp-for="Autor" value="" placeholder="Autor" />
+            </div>
 
-            <label asp-for="Editora">Editora:</label>
-            <input type="text" asp-for="Editora" value="" placeholder="Editora" /> <br />
+            <div class="form-group">
+                <label asp-for="Editora">Editora:</label>
+                <input type="text" class="form-control" asp-for="Editora" value="" placeholder="Editora" />
+            </div>
 
-            <label asp-for="Edicao">Edição:</label>
-            <input type="text" asp-for="Edicao" value="" placeholder="Edição" /> <br />
+            <div class="form-group">
+                <label asp-for="Edicao">Edição:</label>
+                <input type="text" asp-for="Edicao" class="form-control" value="" placeholder="Edição" />
+            </div>
 
-            <label asp-for="NumPaginas">Número de páginas:</label>
-            <input type="text" asp-for="NumPaginas" value="" placeholder="Número de páginas" /> <br />
+            <div class="form-group">
+                <label asp-for="NumPaginas">Número de páginas:</label>
+                <input type="text" asp-for="NumPaginas" value="" class="form-control" placeholder="Número de páginas" />
+            </div>
 
-            <label asp-for="Isbn">ISBN:</label>
-            <input type="text" asp-for="Isbn" value="" placeholder="ISBN" /> <br />
+            <div class="form-group">
+                <label asp-for="Isbn">ISBN:</label>
+                <input type="text" class="form-control" asp-for="Isbn" value="" placeholder="ISBN" />
+            </div>
 
-            <input type="submit" name="Cadastrar" value="CadastrarLivro" />
+            <div class="form-group">
+                <label asp-for="imagem">(Opcional)Imagem:</label>
+                <input class="form-control-file" type="file" name="file"/>
+            </div>
+            <input type="submit" name="Cadastrar" class="btn btn-info" value="CadastrarLivro" />
         </fieldset>
     </form>
 
@@ -43,6 +59,7 @@
                     <th scope="col">Edição: </th>
                     <th scope="col">Nº páginas: </th>
                     <th scope="col">Isbn: </th>
+                    <th scope="col">Imagem: </th>
                     <th scope="col">Criado em: </th>
                 </tr>
             </thead>
@@ -58,6 +75,9 @@
                         <td>@livroCadastrado.Edicao</td>
                         <td>@livroCadastrado.NumPaginas</td>
                         <td>@livroCadastrado.Isbn</td>
+                        <td>
+                            <img src="~/Images/@livroCadastrado.imagem" style="width:120px; height:100px"/>
+                        </td>
                         <td>@livroCadastrado.CriadoEm</td>
                         <td>
                             <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id">Remover</a>

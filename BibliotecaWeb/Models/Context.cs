@@ -11,5 +11,6 @@ namespace BibliotecaWeb.Models
         public Context(DbContextOptions options) : base(options) { }         
 
         public DbSet<Livro> Livros { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }

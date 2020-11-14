@@ -10,7 +10,7 @@ namespace BibliotecaWeb.Models
 
     [Table("Livros")]
     public class Livro : BaseModel
-    {
+    { //colocar as validações
         
         public string Titulo { get; set; }
       
@@ -23,5 +23,7 @@ namespace BibliotecaWeb.Models
         public string NumPaginas { get; set; }
     
         public string Isbn { get; set; }
+
+        public string imagem { get; set; }
     }
 }
