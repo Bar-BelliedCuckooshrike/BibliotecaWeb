@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibliotecaWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201114154138_AddTableUsuario")]
-    partial class AddTableUsuario
+    [Migration("20201115095912_BDcreation")]
+    partial class BDcreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,7 +52,12 @@ namespace BibliotecaWeb.Migrations
                     b.Property<string>("imagem")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("usuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("usuarioId");
 
                     b.ToTable("Livros");
                 });
@@ -76,6 +81,15 @@ namespace BibliotecaWeb.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("BibliotecaWeb.Models.Livro", b =>
+                {
+                    b.HasOne("BibliotecaWeb.Models.Usuario", "usuario")
+                        .WithMany("livros")
+                        .HasForeignKey("usuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

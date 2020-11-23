@@ -1,4 +1,5 @@
 ﻿using BibliotecaWeb.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace BibliotecaWeb.DAL
         public LivroDAL(Context context)
         {
             _context = context;
+        }
+
+        public List<Livro> GetByUsuario(int id)
+        {
+            return _context.Livros.Where(x => x.usuarioId == id).ToList();
         }
 
         public Livro BuscarPorISBN(string isbn)

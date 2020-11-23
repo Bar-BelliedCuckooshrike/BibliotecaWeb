@@ -50,7 +50,12 @@ namespace BibliotecaWeb.Migrations
                     b.Property<string>("imagem")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("usuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("usuarioId");
 
                     b.ToTable("Livros");
                 });
@@ -74,6 +79,15 @@ namespace BibliotecaWeb.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("BibliotecaWeb.Models.Livro", b =>
+                {
+                    b.HasOne("BibliotecaWeb.Models.Usuario", "usuario")
+                        .WithMany("livros")
+                        .HasForeignKey("usuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -15,12 +15,14 @@ namespace BibliotecaWeb.Controllers
     {
         private readonly LivroDAL _livroDAL;
         private readonly IWebHostEnvironment _hosting;
+        private readonly UsuarioDAL _usuarioDAL;
 
-        public LivroController(LivroDAL livroDAL, IWebHostEnvironment hosting)
+        public LivroController(LivroDAL livroDAL, IWebHostEnvironment hosting, UsuarioDAL usuarioDAL)
         {
+
             _livroDAL = livroDAL;
             _hosting = hosting;
-            
+            _usuarioDAL = usuarioDAL;
         }
 
         public IActionResult Remover(int id)

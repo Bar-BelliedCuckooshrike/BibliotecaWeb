@@ -26,6 +26,7 @@ namespace BibliotecaWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<LivroDAL>();
+            services.AddScoped<UsuarioDAL>();
             services.AddDbContext<Context>(options => options.UseSqlServer
             (Configuration.GetConnectionString("Connection")));
 
