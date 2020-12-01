@@ -9,11 +9,13 @@
             <div class="form-group">
                 <label asp-for="UserName">Usuário:</label>
                 <input type="text" asp-for="UserName" value="" placeholder="Usuário"/>
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             
             <div class="form-group">
                 <label asp-for="PassWord">Senha:</label>
                 <input type="password" asp-for="PassWord" value="" placeholder="Senha"/>
+                <span asp-validation-for="PassWord" class="text-danger"></span>
             </div>
 
             <input type="submit" name="Login" value="Entrar" class="btn btn-info" />

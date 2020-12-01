@@ -48,9 +48,13 @@ namespace BibliotecaWeb.Controllers
         [HttpPost]
         public IActionResult LoginUsuario(Usuario usuario)
         {
+            
+
             if (_usuarioDAL.Login(usuario))
             {
+                UsuarioDAL.UsuarioLogadoSET(usuario);
                 return RedirectToAction("CadastrarLivro", "Livro");
+                
             }
             ModelState.AddModelError("", "Login ou senha incorretos. Tente Novamente!");
             return View();

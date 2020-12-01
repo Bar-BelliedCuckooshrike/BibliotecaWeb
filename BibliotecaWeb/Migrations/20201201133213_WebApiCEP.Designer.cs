@@ -4,14 +4,16 @@ using BibliotecaWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BibliotecaWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201201133213_WebApiCEP")]
+    partial class WebApiCEP
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +93,7 @@ namespace BibliotecaWeb.Migrations
 
             modelBuilder.Entity("BibliotecaWeb.Models.Livro", b =>
                 {
-                    b.HasOne("BibliotecaWeb.Models.Usuario", null)
+                    b.HasOne("BibliotecaWeb.Models.Usuario", "usuario")
                         .WithMany("livros")
                         .HasForeignKey("usuarioId")
                         .OnDelete(DeleteBehavior.Cascade)

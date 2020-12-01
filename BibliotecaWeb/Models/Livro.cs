@@ -28,7 +28,9 @@ namespace BibliotecaWeb.Models
 
         public Usuario usuario { get; set; }
 
-        [ForeignKey("usuarioId")]
+        [ForeignKey("usuario")]
         public int usuarioId { get; set; }
+       
+
     }
 }

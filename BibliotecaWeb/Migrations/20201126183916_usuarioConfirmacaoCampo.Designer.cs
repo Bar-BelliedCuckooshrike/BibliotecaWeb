@@ -4,14 +4,16 @@ using BibliotecaWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BibliotecaWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201126183916_usuarioConfirmacaoCampo")]
+    partial class usuarioConfirmacaoCampo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,9 +55,6 @@ namespace BibliotecaWeb.Migrations
                     b.Property<int>("usuarioId")
                         .HasColumnType("int");
 
-                    b.Property<int>("usuariologado")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("usuarioId");
@@ -69,9 +68,6 @@ namespace BibliotecaWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Cep")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
@@ -91,7 +87,7 @@ namespace BibliotecaWeb.Migrations
 
             modelBuilder.Entity("BibliotecaWeb.Models.Livro", b =>
                 {
-                    b.HasOne("BibliotecaWeb.Models.Usuario", null)
+                    b.HasOne("BibliotecaWeb.Models.Usuario", "usuario")
                         .WithMany("livros")
                         .HasForeignKey("usuarioId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -49,5 +49,18 @@ namespace BibliotecaWeb.DAL
             }
             return false;
         }
+
+        static Usuario usuariologado = new Usuario();
+
+        public static void UsuarioLogadoSET(Usuario usuario)
+        {
+            usuariologado = usuario;
+        }
+
+        public static int UsuarioLogadoGET()
+        {
+            return usuariologado.Id;
+        }
+
     }
 }

@@ -165,7 +165,12 @@ C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\BibliotecaWeb.csproj.CoreCompileInputs.cache
-C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\BibliotecaWeb.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\CadastrarUsuario.cshtml.g.cs
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\LoginUsuario.cshtml.g.cs
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\BibliotecaWeb.csproj.CoreCompileInputs.cache
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\BibliotecaWeb.MvcApplicationPartsAssemblyInfo.cache

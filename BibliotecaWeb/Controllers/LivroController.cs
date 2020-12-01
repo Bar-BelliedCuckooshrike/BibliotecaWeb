@@ -56,7 +56,8 @@ namespace BibliotecaWeb.Controllers
         [HttpPost]
         public IActionResult CadastrarLivro(Livro livro, IFormFile file) //<- IFormFile é para arquivos.
         {
-            
+            Usuario usuario = new Usuario();
+
             if (file != null)
             { //salva uma imagem.
                 string arquivo = Path.GetFileName(file.FileName);
@@ -68,6 +69,9 @@ namespace BibliotecaWeb.Controllers
             { //se não houver imagem, adiciona essa imagem.
                 livro.imagem = "noimageavailable.jpg";
             }
+
+            livro.usuariologado = UsuarioDAL.UsuarioLogadoGET();
+
             //Recebe os dados do formulário e salva-os.
             if (_livroDAL.CadastrarLivro(livro))
             {

@@ -40,6 +40,7 @@ namespace BibliotecaWeb.DAL
         {
             if (BuscarPorISBN(livro.Isbn) == null)
             {
+                livro.usuarioId = UsuarioDAL.UsuarioLogadoGET();
                 _context.Livros.Add(livro);
                 _context.SaveChanges();
                 return true;
