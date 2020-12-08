@@ -178,3 +178,4 @@ C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Edit.cshtml.g.cs
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Index.cshtml.g.cs
 C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Login.cshtml.g.cs
+C:\Users\Felipe\source\repos\BibliotecaWeb\BibliotecaWeb\obj\Debug\netcoreapp3.1\Razor\Views\Livro\BuscarData.cshtml.g.cs

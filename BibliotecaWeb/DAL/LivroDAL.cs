@@ -31,6 +31,20 @@ namespace BibliotecaWeb.DAL
            return _context.Livros.ToList();
         }
 
+        public async Task<List<Livro>> FindByDate(DateTime? minDate, DateTime? maxDate)
+        {
+            var result = from obj in _context.Livros select obj;
+            if (minDate.HasValue)
+            {
+                result = result.Where(x => x.CriadoEm >= minDate.Value);
+            }
+            if (maxDate.HasValue)
+            {
+                result = result.Where(x => x.CriadoEm <= maxDate.Value);
+            }
+            return await result.OrderByDescending(x => x.CriadoEm).ToListAsync();
+        }
+
         public Livro BuscarPorId(int id)
         {
             return _context.Livros.Find(id);

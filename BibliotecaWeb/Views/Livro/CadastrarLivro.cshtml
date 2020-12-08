@@ -9,6 +9,8 @@
     <form asp-action="CadastrarLivro" asp-controller="Livro" method="post" enctype="multipart/form-data">
         <b>Logado: @User.Identity.IsAuthenticated.ToString()</b><br />
         <a asp-action="Logout" asp-controller="Usuario">Sair</a>
+        <a asp-action="BuscarData" asp-controller="Livro" class="btn btn-success">Buscar por data</a>
+               
         <fieldset>
             
             <legend>Cadastrar Livro</legend>

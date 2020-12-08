@@ -27,6 +27,12 @@ namespace BibliotecaWeb.Controllers
             
         }
 
+        public async Task<IActionResult> BuscarData(DateTime? minDate, DateTime? maxDate)
+        {
+            var result = await _livroDAL.FindByDate(minDate, maxDate);
+            return View(result);
+        }
+
         public IActionResult Remover(int id)
         {
             _livroDAL.Remover(id);

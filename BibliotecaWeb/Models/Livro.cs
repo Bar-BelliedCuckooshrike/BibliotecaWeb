@@ -24,12 +24,7 @@ namespace BibliotecaWeb.Models
     
         public string Isbn { get; set; }
 
-        public string imagem { get; set; }
-
-        [ForeignKey("UsuarioId")]
-        public Usuario Usuario { get; set; }
-       
-        public string UsuarioId { get; set; }
+        public string imagem { get; set; }       
 
     }
 }
