@@ -1,0 +1,73 @@
+﻿@model BibliotecaWeb.Models.UsuarioView
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Cadastrar usuário</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <fieldset> 
+                <legend>Dados do endereço</legend>
+                <div class="form-group">
+                    <label asp-for="Cep">Cep:</label>
+                    <input class="form-control" id="cep" asp-for="Cep"/>
+                </div>
+                <button class="btn btn-success" onclick="buscarCEP()" type="button">Buscar endereço</button>
+                <div class="form-group">
+                    <label asp-for="Cep">Dados:</label>
+                    <textarea class="form-control" readonly id="txtCep" rows="3" asp-for="Cep"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="NomeUsuario" class="control-label"></label>
+                    <input asp-for="NomeUsuario" class="form-control" />
+                    <span asp-validation-for="NomeUsuario" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SenhaUsuario" class="control-label"></label>
+                    <input asp-for="SenhaUsuario" class="form-control" type="password" />
+                    <span asp-validation-for="SenhaUsuario" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SenhaConfirm" class="control-label"></label>
+                    <input asp-for="SenhaConfirm" class="form-control" type="password" />
+                    <span asp-validation-for="SenhaConfirm" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Lista de usuarios</a>
+</div>
+<div>
+    <a asp-action="Index" asp-controller="Menu">Menu Principal</a>
+</div>
+
+<script>
+    var txtCep = document.getElementById("cep");
+    var postcep = txtCep;
+    postcep = document.getElementById("txtCep");
+    var xhr = new XMLHttpRequest();
+
+    function buscarCEP() {
+        xhr.open("GET", `http://cep.la/${txtCep.value}`, true);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onreadystatechange = function () {
+            if ((xhr.readyState == 0 || xhr.readyState == 4) && xhr.status == 200) {
+                postcep.value = xhr.responseText;
+            }
+        }; xhr.send(null);
+    }
+</script>
+

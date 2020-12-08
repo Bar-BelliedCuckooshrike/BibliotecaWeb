@@ -6,6 +6,7 @@ using BibliotecaWeb.DAL;
 using BibliotecaWeb.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,9 +27,18 @@ namespace BibliotecaWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<LivroDAL>();
-            services.AddScoped<UsuarioDAL>();
+            //services.AddScoped<UsuarioDAL>();
             services.AddDbContext<Context>(options => options.UseSqlServer
             (Configuration.GetConnectionString("Connection")));
+
+            services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<Context>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Usuario/Login";
+                options.AccessDeniedPath = "/Usuario/AcessoNegado";
+            });
 
             services.AddControllersWithViews();
         }
@@ -49,6 +59,8 @@ namespace BibliotecaWeb
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

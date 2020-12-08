@@ -1,11 +1,16 @@
 ﻿@model Livro
 
-@{ List<Livro> livros = ViewBag.Livros;
-    
+@{
+    List<Livro> livros = ViewBag.Livros;
+    Livro livro = new Livro();
+   
   }
 
     <form asp-action="CadastrarLivro" asp-controller="Livro" method="post" enctype="multipart/form-data">
+        <b>Logado: @User.Identity.IsAuthenticated.ToString()</b><br />
+        <a asp-action="Logout" asp-controller="Usuario">Sair</a>
         <fieldset>
+            
             <legend>Cadastrar Livro</legend>
 
             <div asp-validation-summary="ModelOnly"></div>

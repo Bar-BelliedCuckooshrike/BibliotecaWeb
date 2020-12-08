@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibliotecaWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201126183916_usuarioConfirmacaoCampo")]
-    partial class usuarioConfirmacaoCampo
+    [Migration("20201208154503_dbCreation")]
+    partial class dbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -52,46 +52,9 @@ namespace BibliotecaWeb.Migrations
                     b.Property<string>("imagem")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("usuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("usuarioId");
 
                     b.ToTable("Livros");
-                });
-
-            modelBuilder.Entity("BibliotecaWeb.Models.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PassWord")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("BibliotecaWeb.Models.Livro", b =>
-                {
-                    b.HasOne("BibliotecaWeb.Models.Usuario", "usuario")
-                        .WithMany("livros")
-                        .HasForeignKey("usuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

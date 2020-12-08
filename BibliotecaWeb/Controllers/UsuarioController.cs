@@ -2,62 +2,99 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BibliotecaWeb.DAL;
-using BibliotecaWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using BibliotecaWeb.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace BibliotecaWeb.Controllers
 {
     public class UsuarioController : Controller
     {
-        private readonly LivroDAL _livroDAL;
-        private readonly UsuarioDAL _usuarioDAL;
+        private readonly Context _context;
+        private readonly UserManager<Usuario> _userManager;
+        private readonly SignInManager<Usuario> _signInManager;
 
-        public UsuarioController(LivroDAL livroDAL, UsuarioDAL usuarioDAL)
+        public UsuarioController(Context context, UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
         {
-            _livroDAL = livroDAL;
-            _usuarioDAL = usuarioDAL;
+            _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
-        public IActionResult Index()
-        {            
+        // GET: Usuario
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Usuarios.ToListAsync());
+        }       
+        
+        // GET: Usuario/Create
+        public IActionResult Create()
+        {
             return View();
         }
 
-        public IActionResult CadastrarUsuario()
-        {
-            return View();
-        }
-
+        // POST: Usuario/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public IActionResult CadastrarUsuario(Usuario usuario)
-        {
-            if (_usuarioDAL.CadastrarUsuario(usuario))
-            {
-                return RedirectToAction("Index", "Menu");
-            }
-            ModelState.AddModelError("", "Esse usuário já existe!");
-            return View(usuario);
-        }
-
-        public IActionResult LoginUsuario()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult LoginUsuario(Usuario usuario)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("NomeUsuario,SenhaUsuario,Id,CriadoEm,SenhaConfirm,Cep")] UsuarioView usuarioView)
         {
             
-
-            if (_usuarioDAL.Login(usuario))
+            if (ModelState.IsValid)
             {
-                UsuarioDAL.UsuarioLogadoSET(usuario);
-                return RedirectToAction("CadastrarLivro", "Livro");
-                
+                Usuario usuario = new Usuario()
+                {
+                    UserName = usuarioView.NomeUsuario,
+                    Cep = usuarioView.Cep
+                    
+                };
+                IdentityResult resultado = await _userManager.CreateAsync(usuario, usuarioView.SenhaUsuario);
+                if (resultado.Succeeded)
+                {
+                    _context.Add(usuarioView);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                AddErrors(resultado);
             }
-            ModelState.AddModelError("", "Login ou senha incorretos. Tente Novamente!");
+            return View(usuarioView);
+        }
+
+        public void AddErrors(IdentityResult resultado)
+        {
+            foreach (IdentityError erro in resultado.Errors)
+            {
+                ModelState.AddModelError("", erro.Description);
+            }
+        }
+
+        public IActionResult Login()
+        {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Login([Bind("NomeUsuario,SenhaUsuario")] UsuarioView usuarioView)
+        {
+          var result = await _signInManager.PasswordSignInAsync(usuarioView.NomeUsuario, usuarioView.SenhaUsuario, 
+              false, false);
+            string name = _signInManager.Context.User.Identity.Name;
+            if (result.Succeeded)
+            {
+                return RedirectToAction("CadastrarLivro", "Livro");
+            }
+            ModelState.AddModelError("", "Login ou senha inválidos!");
+            return View(usuarioView);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Menu");
+        }
+
     }
 }

@@ -16,10 +16,10 @@ namespace BibliotecaWeb.DAL
             _context = context;
         }
 
-        public List<Livro> GetByUsuario(int id)
-        {
-            return _context.Livros.Where(x => x.usuarioId == id).ToList();
-        }
+        //public List<Livro> GetByUsuario(int id)
+        //{
+        //    return _context.Livros.Where(x => x.UsuarioId == id).ToList();
+        //}
 
         public Livro BuscarPorISBN(string isbn)
         {
@@ -39,8 +39,7 @@ namespace BibliotecaWeb.DAL
         public bool CadastrarLivro(Livro livro)
         {
             if (BuscarPorISBN(livro.Isbn) == null)
-            {
-                livro.usuarioId = UsuarioDAL.UsuarioLogadoGET();
+            {                
                 _context.Livros.Add(livro);
                 _context.SaveChanges();
                 return true;

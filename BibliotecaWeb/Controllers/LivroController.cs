@@ -5,24 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using BibliotecaWeb.DAL;
 using BibliotecaWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BibliotecaWeb.Controllers
 {
+    
     public class LivroController : Controller
     {
         private readonly LivroDAL _livroDAL;
         private readonly IWebHostEnvironment _hosting;
-        private readonly UsuarioDAL _usuarioDAL;
+        
 
-        public LivroController(LivroDAL livroDAL, IWebHostEnvironment hosting, UsuarioDAL usuarioDAL)
+        public LivroController(LivroDAL livroDAL, IWebHostEnvironment hosting)
         {
 
             _livroDAL = livroDAL;
             _hosting = hosting;
-            _usuarioDAL = usuarioDAL;
+            
         }
 
         public IActionResult Remover(int id)
@@ -56,7 +58,7 @@ namespace BibliotecaWeb.Controllers
         [HttpPost]
         public IActionResult CadastrarLivro(Livro livro, IFormFile file) //<- IFormFile é para arquivos.
         {
-            Usuario usuario = new Usuario();
+           
 
             if (file != null)
             { //salva uma imagem.
@@ -69,8 +71,6 @@ namespace BibliotecaWeb.Controllers
             { //se não houver imagem, adiciona essa imagem.
                 livro.imagem = "noimageavailable.jpg";
             }
-
-            livro.usuariologado = UsuarioDAL.UsuarioLogadoGET();
 
             //Recebe os dados do formulário e salva-os.
             if (_livroDAL.CadastrarLivro(livro))
