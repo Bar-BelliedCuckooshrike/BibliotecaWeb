@@ -33,6 +33,13 @@ namespace BibliotecaWeb.Controllers
             return View(result);
         }
 
+        public async Task<IActionResult> BuscarAutor(string autor)
+        {
+            var result = await _livroDAL.BuscarAutor(autor);
+            return View(result);
+        }
+
+
         public IActionResult Remover(int id)
         {
             _livroDAL.Remover(id);
@@ -77,6 +84,7 @@ namespace BibliotecaWeb.Controllers
             { //se não houver imagem, adiciona essa imagem.
                 livro.imagem = "noimageavailable.jpg";
             }
+
 
             //Recebe os dados do formulário e salva-os.
             if (_livroDAL.CadastrarLivro(livro))

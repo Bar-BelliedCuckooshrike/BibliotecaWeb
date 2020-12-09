@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Livro>
+
+    <div class="container-fluid">
+        <form class="navbar" role="search">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="Autor">Autor</label>
+                    <input type="text" name="Autor" class="form-control"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Buscar</button>
+        </form>
+    </div>
+    <div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Autor)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Autor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

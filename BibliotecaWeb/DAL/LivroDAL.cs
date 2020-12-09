@@ -10,6 +10,7 @@ namespace BibliotecaWeb.DAL
     public class LivroDAL
     {
         private readonly Context _context;
+        public static Livro livro = new Livro();
 
         public LivroDAL(Context context)
         {
@@ -45,6 +46,16 @@ namespace BibliotecaWeb.DAL
             return await result.OrderByDescending(x => x.CriadoEm).ToListAsync();
         }
 
+        public async Task<List<Livro>> BuscarAutor(string autor)
+        {
+            var result = from obj in _context.Livros select obj;
+            if (autor == livro.Autor)
+            {
+                result = result.Where(x => x.Autor == autor);
+            }
+            return await result.Where(x => x.Autor == autor).ToListAsync();
+        }
+
         public Livro BuscarPorId(int id)
         {
             return _context.Livros.Find(id);
@@ -72,5 +83,6 @@ namespace BibliotecaWeb.DAL
             _context.Livros.Update(livro);
             _context.SaveChanges();
         }
+        
     }
 }

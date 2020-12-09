@@ -11,6 +11,7 @@ namespace BibliotecaWeb.Models
     [Table("Livros")]
     public class Livro : BaseModel
     { //colocar as validações
+
                 
         public string Titulo { get; set; }
       
@@ -26,5 +27,9 @@ namespace BibliotecaWeb.Models
 
         public string imagem { get; set; }       
 
+        //[ForeignKey("UsuarioId")]
+        //public Usuario Usuario { get; set; }
+
+        //public string UsuarioId { get; set; }
     }
 }
