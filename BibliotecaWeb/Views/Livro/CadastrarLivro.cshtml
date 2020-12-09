@@ -7,7 +7,7 @@
   }
 
     <form asp-action="CadastrarLivro" asp-controller="Livro" method="post" enctype="multipart/form-data">
-        <b>Logado: @User.Identity.IsAuthenticated.ToString()</b><br />
+        <b>Bem Vindo: @User.Identity.Name.ToString()</b><br />
         <a asp-action="Logout" asp-controller="Usuario">Sair</a>
         <a asp-action="BuscarData" asp-controller="Livro" class="btn btn-success">Buscar por data</a>
         <a asp-action="BuscarAutor" asp-controller="Livro" class="btn btn-secondary">Buscar por autor</a>
